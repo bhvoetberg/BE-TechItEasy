@@ -21,7 +21,6 @@ Gedurende de cursus Spring Boot zal het langzamerhand duidelijk worden waarom je
 - De **TelevisionsController** bevat: 
   - een GET-request voor alle televisies
   - een GET-request voor 1 televisie
-  - een GET-request voor alle televisies die overeenkomen met de waarde van de variabele `brand`
   - een POST-request voor 1 televisie
   - een PUT-request voor 1 televisie
   - een DELETE-request voor 1 televisie
