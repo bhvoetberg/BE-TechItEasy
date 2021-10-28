@@ -56,4 +56,4 @@ _Let op_: het is uitdagender om jouw eigen stappenplan te maken. Mocht je niet z
 10. Maak een nieuwe klasse aan in de map Exceptions
 11. Extend de klasse met de RunTimeException
 12. Vul de klasse aan de hand van het voorbeeld van hoofdstuk 5.11 van de cursus Spring Boot
-"# Assignment1-Springboot-08-2021" 
+
