@@ -24,10 +24,13 @@ public class TelevisionController {
     }
 
     @GetMapping(value = "/televisions")
-//    public String getTelevisions() {
-//        return "Hallo";
-//    }
     public List<Television> getTelevisions() {
         return inventory;
     }
+
+//    @GetMapping(value = "/televisions")
+//    public List<Television> getTelevisions() {
+//        return inventory;
+//    }
+
 }
