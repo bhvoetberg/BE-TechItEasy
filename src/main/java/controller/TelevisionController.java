@@ -1,6 +1,9 @@
 package controller;
 
+import Exceptions.RecordNotFoundException;
 import Television.Television;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import java.util.List;
 @RestController
 public class TelevisionController {
 
-    private ArrayList<Television> inventory = new ArrayList<Television>();
+    private ArrayList<Television> inventory;
 
     Television tv1 = new Television("Philips", "43PUS6504/12", "4K TV");
     Television tv2 = new Television("Samsung", "QE55Q60T", "4K QLED TV");
@@ -32,7 +35,14 @@ public class TelevisionController {
 
     @GetMapping(value = "/televisions/{id}")
     public Television getTelevision(@PathVariable int id) {
-        return inventory.get(id);
+        try {
+            ResponseEntity.ok();
+            return inventory.get(id);
+        }
+        catch (RecordNotFoundException exception) {
+            System.out.println("ID not found");
+            throw new RecordNotFoundException("ID not found");
+        }
     }
 
     @PostMapping(value = "/televisions", consumes = "application/json", produces = "application/json")
@@ -41,17 +51,17 @@ public class TelevisionController {
         return television;
     }
 
-    //Deze geeft nog een 415 in Postman
-    @PutMapping(value = "/televisions/{id}", consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "/televisions/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Television updateTelevision(@PathVariable int id, @RequestBody Television television) {
         inventory.set(id, television);
         return television;
     }
 
     @DeleteMapping(value = "/televisions/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteTelevision(@PathVariable int id) {
         inventory.remove(id);
         return "Nummer " + id + " is deleted";
     }
-
 }
